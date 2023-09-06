@@ -1,0 +1,18 @@
+{
+  "build": {
+    "extra_flags": "-DVISIONFIVE2",
+    "mabi": "lp64d",
+    "march": "rv64gc",
+    "mcmodel": "medlow",
+    "mtune": "sifive-7-series"
+  },
+  "frameworks": [
+  ],
+  "name": "VisionFive 2",
+  "upload": {
+    "maximum_ram_size": 1073741824,
+    "maximum_size": 1073741824
+  },
+  "url": "https://www.starfivetech.com/en/site/boards",
+  "vendor": "StarFive"
+}

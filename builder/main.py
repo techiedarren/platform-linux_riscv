@@ -1,5 +1,3 @@
-# Copyright 2014-present PlatformIO <contact@platformio.org>
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,7 +11,7 @@
 # limitations under the License.
 
 """
-    Builder for Linux ARM
+    Builder for Linux RISC-V
 """
 
 from SCons.Script import AlwaysBuild, Default, DefaultEnvironment
@@ -21,25 +19,36 @@ from SCons.Script import AlwaysBuild, Default, DefaultEnvironment
 from platformio.util import get_systype
 
 env = DefaultEnvironment()
+board_config = env.BoardConfig()
+
+machine_flags = [
+    "-march=%s" % board_config.get("build.march"),
+    "-mabi=%s" % board_config.get("build.mabi"),
+    "-mcmodel=%s" % board_config.get("build.mcmodel"),
+    "-mtune=%s" % board_config.get("build.mtune"),
+    "-enable-linux"
+]
+
+# -mcpu=sifive-u74 -mtune=
 
 env.Replace(
-    _BINPREFIX="",
-    AR="${_BINPREFIX}ar",
-    AS="${_BINPREFIX}as",
-    CC="${_BINPREFIX}gcc",
-    CXX="${_BINPREFIX}g++",
-    GDB="${_BINPREFIX}gdb",
-    OBJCOPY="${_BINPREFIX}objcopy",
-    RANLIB="${_BINPREFIX}ranlib",
-    SIZETOOL="${_BINPREFIX}size",
+    AR="riscv64-unknown-elf-gcc-ar",
+    AS="riscv64-unknown-elf-as",
+    CC="riscv64-unknown-elf-gcc",
+    GDB="riscv64-unknown-elf-gdb",
+    CXX="riscv64-unknown-elf-g++",
+    OBJCOPY="riscv64-unknown-elf-objcopy",
+    RANLIB="riscv64-unknown-elf-gcc-ranlib",
+    SIZETOOL="riscv64-unknown-elf-size",
 
-    SIZEPRINTCMD='$SIZETOOL $SOURCES'
+    ARFLAGS=["rc"],
+
+    SIZEPRINTCMD='$SIZETOOL -d $SOURCES',
+
+    ASFLAGS=machine_flags,
+    CCFLAGS=machine_flags,
+    LINKFLAGS=machine_flags
 )
-
-if get_systype() == "darwin_x86_64":
-    env.Replace(
-        _BINPREFIX="arm-linux-gnueabihf-"
-    )
 
 #
 # Target: Build executable program

@@ -1,9 +1,6 @@
-# Linux ARM: development platform for [PlatformIO](https://platformio.org)
+# Linux RISCV: development platform for [PlatformIO](https://platformio.org)
 
-Linux ARM is a Unix-like and mostly POSIX-compliant computer operating system (OS) assembled under the model of free and open-source software development and distribution. Using host OS (Mac OS X, Linux ARM) you can build native application for Linux ARM platform.
-
-* [Home](https://registry.platformio.org/platforms/platformio/linux_arm) (home page in the PlatformIO Registry)
-* [Documentation](https://docs.platformio.org/page/platforms/linux_arm.html) (advanced usage, packages, boards, frameworks, etc.)
+Linux (RISC-V) is a Unix-like operating system that adheres mostly to the POSIX standard. It is developed and distributed following the principles of free and open-source software. Using host OS (Mac OS X, Linux) you can build native application for Linux RISC-V platform.
 
 # Usage
 
@@ -14,20 +11,7 @@ Linux ARM is a Unix-like and mostly POSIX-compliant computer operating system (O
 
 ```ini
 [env:stable]
-platform = linux_arm
+platform = linux_riscv
 board = ...
 ...
 ```
-
-## Development version
-
-```ini
-[env:development]
-platform = https://github.com/platformio/platform-linux_arm.git
-board = ...
-...
-```
-
-# Configuration
-
-Please navigate to [documentation](https://docs.platformio.org/page/platforms/linux_arm.html).

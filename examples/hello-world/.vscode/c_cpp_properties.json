@@ -1,0 +1,38 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/Users/darrenlee/Files/Projects/platform-linux_riscv/examples/hello-world/include",
+                "/Users/darrenlee/Files/Projects/platform-linux_riscv/examples/hello-world/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/Users/darrenlee/Files/Projects/platform-linux_riscv/examples/hello-world/include",
+                    "/Users/darrenlee/Files/Projects/platform-linux_riscv/examples/hello-world/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60111",
+                "VISIONFIVE2",
+                ""
+            ],
+            "compilerPath": "/Users/darrenlee/.platformio/packages/toolchain-riscv/bin/riscv64-unknown-elf-gcc",
+            "compilerArgs": [
+                "-march=rv32imac",
+                "-mabi=ilp32",
+                "-mcmodel=medlow",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
